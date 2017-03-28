@@ -2,18 +2,13 @@ package org.fridgeguard.rest;
 
 import io.swagger.api.HealthApi;
 import org.fridgeguard.model.HealthStatus;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-03-24T13:57:21.660Z")
-
-@Controller
+@RestController
 public class HealthApiController implements HealthApi {
-
-
-
+    @Override
     public ResponseEntity<HealthStatus> healthGet() {
         HealthStatus healthStatus = new HealthStatus();
         healthStatus.setStatus("Green");
@@ -21,7 +16,6 @@ public class HealthApiController implements HealthApi {
         healthStatus.setTotalFriges(0);
         healthStatus.setTotalItems(0);
 
-        return new ResponseEntity<HealthStatus>(healthStatus, HttpStatus.OK);
+        return new ResponseEntity<>(healthStatus, HttpStatus.OK);
     }
-
 }
